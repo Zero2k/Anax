@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* Main Body */
+html {
+    
+}
+
+h4 {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.main {
+    padding-top: 5vh;
+    min-height: 90vh;
+    margin: auto;
+}
+
+.card {
+    float: left;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+}
+
+.card-full {
+    float: left;
+    width: 100%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    box-shadow: none;
+}
+
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
+}
+
+.kmom {
+    min-height: 50rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #f7f7f7;
+}
+
+/* Navbar */
+
+.navbar-wrap li {
+    padding-right: 20px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(248, 246, 246);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    opacity: 0.9;
+}
+
+.navbar-header a {
+    padding-left: 200px;
+}
+
+
+/* Footer */
+
+
+
+/* Text */
+h1 {
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.navtext {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 800px) {
+    .card {
+        float: left;
+        width: 50%;
+        padding: .75rem;
+        margin-bottom: 2rem;
+        border: 0;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .card {
+        float: left;
+        width: 100%;
+        padding: .75rem;
+        margin-bottom: 2rem;
+        border: 0;
+    }
+}
+
