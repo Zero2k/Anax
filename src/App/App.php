@@ -22,7 +22,7 @@ class App
      */
     public function renderPage($data, $status = 200)
     {
-        $data["stylesheets"] = ["https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", "css/style.css"];
+        $data["stylesheets"] = ["https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", "css/remserver.css", "css/style.css"];
         
         // Add common header, navbar and footer
         // $this->view->add("layout/header", [], "header");

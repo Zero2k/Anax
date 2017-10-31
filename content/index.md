@@ -1,7 +1,7 @@
 ---
 title: "Welcome to Ramverk1"
 ...
-<div class="jumbotron">
+<div class="jumbotron text-center">
   <h1 class="display-3">Hello, world!</h1>
   <p class="lead">This site is built with Anax which is a lightweight PHP framework, perfect for smaller websites such as blogs, forums or personal sites. Anax works with a variety of modules with pre built functionality such as Image Resizing, Cache...</p>
   <hr class="my-4">
@@ -15,7 +15,7 @@ title: "Welcome to Ramverk1"
 
 <h2 class="text-center">Course Assignments</h2>
 
-<div class="row">
+<div class="row text-center">
     <div class="card">
         <img data-src="holder.js/100px280?theme=thumb" alt="Thumbnail [100%x280]" style="height: 280px; width: 100%; display: block;" src="img/kmom01.jpg" data-holder-rendered="true">
         <h4 class="center-text">Kmom01</h4>

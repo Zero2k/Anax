@@ -24,7 +24,7 @@
     <?php endif; ?>
 
     <?php if ($this->regionHasContent("main")) : ?>
-        <div class="container main text-center">
+        <div class="container main">
             <?php $this->renderRegion("main") ?>
         </div>
     <?php endif; ?>

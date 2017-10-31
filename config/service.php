@@ -40,5 +40,16 @@ $app->view->configure("view.php");
 $app->navbar->setApp($app);
 $app->navbar->configure("navbar.php");
 
+// Add the REM server
+$app->rem           = new \Anax\RemServer\RemServer();
+$app->remController = new \Anax\RemServer\RemServerController();
+
+// Init REM Server
+$app->rem->configure("remserver.php");
+$app->rem->inject(["session" => $app->session]);
+
+// Init controller for the REM Server
+$app->remController->setApp($app);
+
 // Return the populated $app
 return $app;
