@@ -27,6 +27,19 @@ h4 {
     color: inherit;
 }
 
+h5 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+h6 {
+    font-size: 80%;
+    font-weight: 400;
+}
+
 .main {
     padding-top: 5vh;
     min-height: 90vh;
@@ -77,6 +90,12 @@ h4 {
     padding-top: 3rem;
     padding-bottom: 3rem;
     background-color: #f7f7f7;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    margin-top: .7rem;
+    padding-bottom: 1rem;
 }
 
 /* Navbar */

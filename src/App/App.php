@@ -16,7 +16,6 @@ class App
     }
 
 
-
     /**
      * Render a standard web page using a specific layout.
      */

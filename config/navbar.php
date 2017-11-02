@@ -13,6 +13,10 @@ return [
         "text" => "Remserver",
         "route" => "remserver"
     ],
+    "comment" => [
+        "text" => "Comments",
+        "route" => "comments"
+    ],
     "about" => [
         "text" => "About",
         "route" => "about"
