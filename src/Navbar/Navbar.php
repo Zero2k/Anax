@@ -1,16 +1,18 @@
 <?php
 
-namespace Anax\Navbar;
+namespace Vibe\Navbar;
+
+use \Anax\DI\InjectionAwareInterface;
+use \Anax\DI\InjectionAwareTrait;
+use \Anax\Configure\ConfigureInterface;
+use \Anax\Configure\ConfigureTrait;
 
 /**
 * Navbar class.
 */
-class Navbar implements
-    \Anax\Common\ConfigureInterface,
-    \Anax\Common\AppInjectableInterface
+class Navbar implements ConfigureInterface, InjectionAwareInterface
 {
-    use \Anax\Common\ConfigureTrait,
-        \Anax\Common\AppInjectableTrait;
+    use InjectionAwareTrait, ConfigureTrait;
 
     public function renderNav()
     {
@@ -19,11 +21,11 @@ class Navbar implements
 
         foreach ($navbarData as $key => $value) {
             foreach ($value as $key => $value) {
-                $active = $this->app->request->getRoute() == $value ? "active" : "";
+                $active = $this->di->get("request")->getRoute() == $value ? "active" : "";
                 if ($key == "text") {
                     $text = $value;
                 } elseif ($key == "route") {
-                    $url = $this->app->url->create($value);
+                    $url = $this->di->get("url")->create($value);
                 }
             }
 

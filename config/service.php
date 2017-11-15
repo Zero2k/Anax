@@ -12,13 +12,13 @@ $app->router     = new \Anax\Route\RouterInjectable();
 $app->view       = new \Anax\View\ViewContainer();
 $app->textfilter = new \Anax\TextFilter\TextFilter();
 $app->session    = new \Anax\Session\SessionConfigurable();
-$app->navbar     = new \Anax\Navbar\Navbar();
+// $app->navbar     = new \Anax\Navbar\Navbar();
 // Add the REM server
-$app->rem           = new \Anax\RemServer\RemServer();
-$app->remController = new \Anax\RemServer\RemServerController();
+// $app->rem           = new \Anax\RemServer\RemServer();
+// $app->remController = new \Anax\RemServer\RemServerController();
 // Add comments
-$app->comments  = new \Vibe\Comments\Comments();
-$app->commentsController = new \Vibe\Comments\CommentsController();
+// $app->comments  = new \Vibe\Comments\Comments();
+// $app->commentsController = new \Vibe\Comments\CommentsController();
 
 // Configure request
 $app->request->init();
@@ -27,8 +27,8 @@ $app->request->init();
 $app->router->setApp($app);
 
 // Configure session
-$app->session->configure("session.php");
-$app->session->start();
+//$app->session->configure("session.php");
+//$app->session->start();
 
 // Configure url
 $app->url->setSiteUrl($app->request->getSiteUrl());
@@ -44,19 +44,19 @@ $app->view->setApp($app);
 $app->view->configure("view.php");
 
 // Configure navbar
-$app->navbar->setApp($app);
-$app->navbar->configure("navbar.php");
+// $app->navbar->setApp($app);
+// $app->navbar->configure("navbar.php");
 
 // Init REM Server
-$app->rem->configure("remserver.php");
-$app->rem->inject(["session" => $app->session]);
+// $app->rem->configure("remserver.php");
+// $app->rem->inject(["session" => $app->session]);
 
 // Init controller for the REM Server
-$app->remController->setApp($app);
+// $app->remController->setApp($app);
 
 // Init comments
-$app->comments->inject(["session" => $app->session]);
-$app->commentsController->setApp($app);
+// $app->comments->inject(["session" => $app->session]);
+// $app->commentsController->setApp($app);
 
 // Return the populated $app
 return $app;

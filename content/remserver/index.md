@@ -158,3 +158,19 @@ DELETE /api/users/13
 ```
 
 The result will always be `null`.
+
+
+
+Other REM servers {#other}
+-------------------------------------------
+
+There are more servers doing the same thing.
+
+* [REM REST API](http://rem-rest-api.herokuapp.com/)
+
+
+
+Source {#source}
+-------------------------------------------
+
+The source is on GitHub in [dbwebb-se/rem-server](https://github.com/dbwebb-se/rem-server).

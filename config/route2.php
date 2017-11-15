@@ -28,6 +28,16 @@ return [
             "file" => __DIR__ . "/route2/flat-file-content.php",
         ],
         [
+            // Routes for remserver
+            "mount" => "api",
+            "file" => __DIR__ . "/route2/remserver.php",
+        ],
+        [
+            // Routes for comments
+            "mount" => "comments",
+            "file" => __DIR__ . "/route2/comment.php",
+        ],
+        [
             // Keep this last since its a catch all
             "mount" => null,
             "sort" => 999,
