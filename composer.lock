@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "faef9c62c9d66c63caf5b148856474a5",
-    "content-hash": "2f3010ff9664fda6d2719d1ad456c2ca",
+    "hash": "f8fc03296570b5b0af749d4e6a555b97",
+    "content-hash": "1422077298ad5d024ac3cabb131e34f9",
     "packages": [
         {
             "name": "anax/common",
@@ -200,6 +200,57 @@
                 "mvc"
             ],
             "time": "2017-10-15 19:52:22"
+        },
+        {
+            "name": "anax/htmlform",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/canax/htmlform.git",
+                "reference": "16f1420a8be6b282ed44dc805f86516b0ad4c468"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/canax/htmlform/zipball/16f1420a8be6b282ed44dc805f86516b0ad4c468",
+                "reference": "16f1420a8be6b282ed44dc805f86516b0ad4c468",
+                "shasum": ""
+            },
+            "require": {
+                "anax/di": "^1.0",
+                "anax/request": "^1.0",
+                "anax/response": "^1.0",
+                "anax/session": "^1.0",
+                "anax/url": "^1.0",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Anax\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikael Roos",
+                    "email": "mos@dbwebb.se",
+                    "homepage": "https://dbwebb.se",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Anax htmlform module.",
+            "homepage": "https://dbwebb.se/anax",
+            "keywords": [
+                "boilerplate",
+                "education",
+                "framework",
+                "micro",
+                "mvc"
+            ],
+            "time": "2018-04-04 14:07:37"
         },
         {
             "name": "anax/page",

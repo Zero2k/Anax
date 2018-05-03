@@ -1,74 +1,130 @@
 <?php
 
-namespace Vibe\Comment;
+namespace Anax\Comment;
 
+use \Anax\Configure\ConfigureInterface;
+use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\DI\InjectionAwareTrait;
+use \Anax\Comment\HTMLForm\CreateForm;
+use \Anax\Comment\HTMLForm\EditForm;
+use \Anax\Comment\HTMLForm\DeleteForm;
+use \Anax\Comment\HTMLForm\UpdateForm;
 
 /**
- * A controller for the Comments.
- *
- * @SuppressWarnings(PHPMD.ExitExpression)
+ * A controller class.
  */
-class CommentController implements InjectionAwareInterface
+class CommentController implements
+    ConfigureInterface,
+    InjectionAwareInterface
 {
-    use InjectionAwareTrait;
+    use ConfigureTrait,
+        InjectionAwareTrait;
+
+
 
     /**
-     * @var string $path, path to comment module view files.
+     * @var $data description
      */
-    private $path = "../view/comments/";
+    //private $data;
+
 
 
     /**
-     * Get all comments.
+     * Show all items.
      *
      * @return void
      */
-    public function viewComments()
+    public function getIndex()
     {
-        $data = $this->di->get("comment")->viewComments();
+        $title      = "A collection of items";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $comment = new Comment();
+        $comment->setDb($this->di->get("database"));
 
-        $this->di->get("view")->add($this->path . "comments", [
-            "allComments" => $data
-        ]);
-        $this->di->get("pageRender")->renderPage([
-            "title" => "Comments"
-        ]);
+        $data = [
+            "allComments" => $comment->findAll(),
+            "username" => $this->di->get("session")->get("username"),
+        ];
+
+        $view->add("comment/view", $data);
+
+        $pageRender->renderPage(["title" => $title]);
     }
 
+
+
     /**
-     * Post comments.
+     * Handler with form to create a new item.
      *
      * @return void
      */
-    public function addComment()
+    public function getPostCreateItem()
     {
-        $postEmail = isset($_POST["email"]) ? htmlentities($_POST["email"]) : null;
-        $postContent = isset($_POST["content"]) ? $_POST["content"] : null;
-        $postName = isset($_POST["name"]) ? htmlentities($_POST["name"]) : null;
+        $title      = "Create a item";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $form       = new CreateForm($this->di);
 
-        if (!$postEmail) {
-            $this->di->get("response")->redirect($this->di->get("url")->create("comments"));
-        }
+        $form->check();
 
-        $email = $postEmail;
-        $content = $this->di->get("textfilter")->doFilter($postContent, "markdown");
-        $name = !$postName ? "Anonymous" : $postName;
+        $data = [
+            "form" => $form->getHTML(),
+        ];
 
-        $data = $this->di->get("comment")->addComment($email, $content, $name);
-        if ($data) {
-            $this->di->get("response")->redirect($this->di->get("url")->create("comments"));
-        }
+        $view->add("comment/create", $data);
+
+        $pageRender->renderPage(["title" => $title]);
     }
 
+
+
     /**
-     * Remove comments.
+     * Handler with form to delete an item.
      *
      * @return void
      */
-    /* public function removeComment($id)
+    public function getPostDeleteItem()
     {
-        
-    } */
+        $title      = "Delete an item";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $form       = new DeleteForm($this->di);
+
+        $form->check();
+
+        $data = [
+            "form" => $form->getHTML(),
+        ];
+
+        $view->add("comment/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
+     * Handler with form to update an item.
+     *
+     * @return void
+     */
+    public function getPostUpdateItem($id)
+    {
+        $title      = "Update an item";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $form       = new UpdateForm($this->di, $id);
+
+        $form->check();
+
+        $data = [
+            "form" => $form->getHTML(),
+        ];
+
+        $view->add("comment/update", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
 }

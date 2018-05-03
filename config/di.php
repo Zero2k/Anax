@@ -16,7 +16,12 @@ return [
         ],
         "response" => [
             "shared" => true,
-            "callback" => "\Anax\Response\Response",
+            //"callback" => "\Anax\Response\Response",
+            "callback" => function () {
+                $obj = new \Anax\Response\ResponseUtility();
+                $obj->setDI($this);
+                return $obj;
+            }
         ],
         "url" => [
             "shared" => true,
@@ -61,6 +66,7 @@ return [
         ],
         "session" => [
             "shared" => true,
+            "active" => true,
             "callback" => function () {
                 $session = new \Anax\Session\SessionConfigurable();
                 $session->configure("session.php");
@@ -130,7 +136,7 @@ return [
                 return $rem;
             }
         ],
-        "comment" => [
+        /* "comment" => [
             "shared" => true,
             "callback" => function () {
                 $comment = new \Vibe\Comment\Comment();
@@ -146,6 +152,14 @@ return [
                 $commentController->setDI($this);
                 return $commentController;
             }
+        ], */
+        "commentController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Anax\Comment\CommentController();
+                $obj->setDI($this);
+                return $obj;
+            }
         ],
         "database" => [
             "shared" => true,
@@ -154,6 +168,14 @@ return [
                 $database->configure("database.php");
                 $database->connect();
                 return $database;
+            }
+        ],
+        "userController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Anax\User\UserController();
+                $obj->setDI($this);
+                return $obj;
             }
         ],
     ],

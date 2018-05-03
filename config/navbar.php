@@ -15,10 +15,14 @@ return [
     ],
     "comment" => [
         "text" => "Comments",
-        "route" => "comments"
+        "route" => "comment"
     ],
     "about" => [
         "text" => "About",
         "route" => "about"
+    ],
+    "probile" => [
+        "text" => "Profile",
+        "route" => "user/profile"
     ]
 ];

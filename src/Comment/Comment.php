@@ -1,80 +1,33 @@
 <?php
 
-namespace Vibe\Comment;
+namespace Anax\Comment;
 
-use \Anax\DI\InjectionAwareInterface;
-use \Anax\DI\InjectionAwareTrait;
-use \Anax\Configure\ConfigureInterface;
-use \Anax\Configure\ConfigureTrait;
+use \Anax\Database\ActiveRecordModel;
 
 /**
- * Comments.
+ * A database driven model.
  */
-class Comment implements ConfigureInterface, InjectionAwareInterface
+class Comment extends ActiveRecordModel
 {
-    use ConfigureTrait;
-    use InjectionAwareTrait;
+    /**
+     * @var string $tableName name of the database table.
+     */
+    protected $tableName = "Comment";
 
-    /**
-     * @var array $session inject a reference to the session.
-     */
-    private $session;
-    
-    
-    /**
-     * @var string $key to use when storing in session.
-     */
-    const KEY = "comments";
 
 
     /**
-     * Inject dependencies.
+     * Columns in the table.
      *
-     * @param array $dependency key/value array with dependencies.
-     *
-     * @return self
+     * @var integer $id primary key auto incremented.
      */
-    public function inject($dependency)
-    {
-        $this->session = $dependency["session"];
-        return $this;
-    }
-
-
-    /**
-     * Get all comments saved in database.
-     *
-     * @return array with the dataset
-     */
-    public function viewComments()
-    {
-        $sql = "SELECT * FROM `comments`";
-        $data = $this->di->get("database")->executeFetchAll($sql);
-        return $data;
-    }
-
-
-    /**
-     * Add new comment.
-     *
-     */
-    public function addComment($email, $content, $name)
-    {
-        $sql = "INSERT INTO comments (email, text, postedBy) VALUES (?, ?, ?)";
-        $data = $this->di->get("database")->execute($sql, [$email, $content, $name]);
-        return $data;
-    }
-
-
-    /**
-     * Remove comment.
-     *
-     * @param string $content, text
-     *
-     * @return array
-     */
-    /* public function removeComment($commentId)
-    {
-
-    } */
+    public $id;
+    public $email;
+    public $text;
+    public $userId;
+    public $postedBy;
+    public $published;
+    public $created;
+    public $updated;
+    public $deleted;
 }

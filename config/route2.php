@@ -33,9 +33,14 @@ return [
             "file" => __DIR__ . "/route2/remserver.php",
         ],
         [
-            // Routes for comments
-            "mount" => "comments",
-            "file" => __DIR__ . "/route2/comment.php",
+            // Add routes from commentController and mount on comment/
+            "mount" => "comment",
+            "file" => __DIR__ . "/route2/commentController.php",
+        ],
+        [
+            // Add routes from userController and mount on user/
+            "mount" => "user",
+            "file" => __DIR__ . "/route2/userController.php",
         ],
         [
             // Keep this last since its a catch all
