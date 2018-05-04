@@ -17,10 +17,16 @@ class UpdateForm extends FormModel
      * @param Anax\DI\DIInterface $di a service container
      * @param integer             $id to update
      */
-    public function __construct(DIInterface $di, $id)
+    public function __construct(DIInterface $di, $id, $userId)
     {
         parent::__construct($di);
-        $comment = $this->getItemDetails($id);
+        $comment = $this->getItemDetails($id, $userId);
+
+        /* If comment doesn't belong to user, redirect to all comments */
+        if(!$comment) {
+            $this->di->get("response")->redirect("comment");
+        }
+
         $this->form->create(
             [
                 "id" => __CLASS__,
@@ -62,12 +68,14 @@ class UpdateForm extends FormModel
      * 
      * @return Comment
      */
-    public function getItemDetails($id)
+    public function getItemDetails($id, $userId)
     {
         $comment = new Comment();
         $comment->setDb($this->di->get("database"));
         $comment->find("id", $id);
-        return $comment;
+        if ($comment->userId === $userId) {
+            return $comment;
+        }
     }
 
 
@@ -85,6 +93,6 @@ class UpdateForm extends FormModel
         $comment->find("id", $this->form->value("id"));
         $comment->text = $this->form->value("text");
         $comment->save();
-        $this->di->get("response")->redirect("comment/update/{$comment->id}");
+        $this->di->get("response")->redirect("comment");
     }
 }

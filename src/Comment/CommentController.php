@@ -90,7 +90,8 @@ class CommentController implements
         $title      = "Delete an item";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
-        $form       = new DeleteForm($this->di);
+        $userId    = $this->di->get("session")->get("userId");
+        $form       = new DeleteForm($this->di, $userId);
 
         $form->check();
 
@@ -115,7 +116,8 @@ class CommentController implements
         $title      = "Update an item";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
-        $form       = new UpdateForm($this->di, $id);
+        $userId    = $this->di->get("session")->get("userId");
+        $form       = new UpdateForm($this->di, $id, $userId);
 
         $form->check();
 

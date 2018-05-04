@@ -15,6 +15,6 @@ CREATE TABLE User (
     `updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `deleted` DATETIME,
     `active` DATETIME,
-    `role` VARCHAR(80) DEFAULT 'user'
+    `admin` BOOLEAN DEFAULT 0
 
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;

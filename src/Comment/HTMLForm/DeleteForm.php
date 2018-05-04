@@ -16,7 +16,7 @@ class DeleteForm extends FormModel
      *
      * @param Anax\DI\DIInterface $di a service container
      */
-    public function __construct(DIInterface $di)
+    public function __construct(DIInterface $di, $userId)
     {
         parent::__construct($di);
         $this->form->create(
@@ -28,7 +28,7 @@ class DeleteForm extends FormModel
                 "select" => [
                     "type"        => "select",
                     "label"       => "Select item to delete:",
-                    "options"     => $this->getAllItems(),
+                    "options"     => $this->getAllItems($userId),
                 ],
 
                 "submit" => [
@@ -47,13 +47,13 @@ class DeleteForm extends FormModel
      *
      * @return array with key value of all items.
      */
-    protected function getAllItems()
+    protected function getAllItems($userId)
     {
         $comment = new Comment();
         $comment->setDb($this->di->get("database"));
 
         $comments = ["-1" => "Select an item..."];
-        foreach ($comment->findAll() as $obj) {
+        foreach ($comment->findAllWhere("userId = ?", $userId) as $obj) {
             $comments[$obj->id] = "{$obj->published} ({$obj->id})";
         }
 
