@@ -43,6 +43,11 @@ return [
             "file" => __DIR__ . "/route2/userController.php",
         ],
         [
+            // Add routes from adminController and mount on admin/
+            "mount" => "admin",
+            "file" => __DIR__ . "/route2/adminController.php",
+        ],
+        [
             // Keep this last since its a catch all
             "mount" => null,
             "sort" => 999,

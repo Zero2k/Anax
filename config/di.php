@@ -136,23 +136,6 @@ return [
                 return $rem;
             }
         ],
-        /* "comment" => [
-            "shared" => true,
-            "callback" => function () {
-                $comment = new \Vibe\Comment\Comment();
-                $comment->inject(["session" => $this->get("session")]);
-                $comment->setDI($this);
-                return $comment;
-            }
-        ],
-        "commentController" => [
-            "shared" => true,
-            "callback" => function () {
-                $commentController = new \Vibe\Comment\CommentController();
-                $commentController->setDI($this);
-                return $commentController;
-            }
-        ], */
         "commentController" => [
             "shared" => true,
             "callback" => function () {
@@ -174,6 +157,14 @@ return [
             "shared" => true,
             "callback" => function () {
                 $obj = new \Anax\User\UserController();
+                $obj->setDI($this);
+                return $obj;
+            }
+        ],
+        "adminController" => [
+            "shared" => true,
+            "callback" => function () {
+                $obj = new \Anax\Admin\AdminController();
                 $obj->setDI($this);
                 return $obj;
             }

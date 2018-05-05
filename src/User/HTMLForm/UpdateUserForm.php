@@ -105,12 +105,12 @@ class UpdateUserForm extends FormModel
         $acronym = $this->form->value("acronym");
         $email = $this->form->value("email");
         $password = $this->form->value("password");
-        $confirm_password = $this->form->value("confirm-password");
+        $confirmPassword = $this->form->value("confirm-password");
 
         if (!$password) {
             $user->password = $user->password;
         } else {
-            if ($password !== $confirm_password) {
+            if ($password !== $confirmPassword) {
                 $this->form->rememberValues();
                 $this->form->addOutput("Password did not match.", "fail");
                 return false;
