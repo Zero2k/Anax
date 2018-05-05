@@ -41,17 +41,7 @@ class UserController implements
      */
     public function getIndex()
     {
-        $title      = "A index page";
-        $view       = $this->di->get("view");
-        $pageRender = $this->di->get("pageRender");
-
-        $data = [
-            "content" => "An index page",
-        ];
-
-        $view->add("default2/article", $data);
-
-        $pageRender->renderPage(["title" => $title]);
+        $this->di->get("response")->redirect("user/profile");
     }
 
 
@@ -170,6 +160,7 @@ class UserController implements
         $this->di->get('session')->delete('userId');
         $this->di->get('session')->delete('username');
         $this->di->get('session')->delete('userEmail');
+        $this->di->get('session')->delete('userAdmin');
         $this->di->get("response")->redirect("user/login");
     }
 }
