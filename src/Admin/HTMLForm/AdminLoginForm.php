@@ -83,7 +83,7 @@ class AdminLoginForm extends FormModel
         $session->set("userEmail", $user->email);
         $session->set("userAdmin", $user->admin);
 
-        $this->di->get("response")->redirect("user/profile");
+        $this->di->get("response")->redirect("admin");
         return true;
     }
 }

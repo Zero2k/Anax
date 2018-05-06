@@ -7,6 +7,10 @@ use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Anax\Admin\HTMLForm\AdminLoginForm;
+use \Anax\Admin\HTMLForm\AdminEditForm;
+use \Anax\Admin\HTMLForm\AdminDeleteForm;
+use \Anax\Admin\HTMLForm\AdminAddForm;
+use \Anax\User\User;
 
 /**
  * A controller class.
@@ -79,6 +83,97 @@ class AdminController implements
         ];
 
         $view->add("admin/login", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getUsers()
+    {
+        $title      = "All users";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $users = new User();
+        $users->setDb($this->di->get("database"));
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "users" => $users->findAll(),
+        ];
+
+        $view->add("admin/users", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function editUser($id)
+    {
+        $title      = "Edit user";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $form       = new AdminEditForm($this->di, $id);
+
+        $form->check();
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "content" => $form->getHTML(),
+        ];
+
+        $view->add("admin/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function deleteUser($id)
+    {
+        $title      = "Delete user";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $form       = new AdminDeleteForm($this->di, $id);
+
+        $form->check();
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "content" => $form->getHTML(),
+        ];
+
+        $view->add("admin/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function addUser()
+    {
+        $title      = "Add user";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $form       = new AdminAddForm($this->di);
+
+        $form->check();
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "content" => $form->getHTML(),
+        ];
+
+        $view->add("admin/add", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }

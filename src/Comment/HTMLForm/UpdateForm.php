@@ -23,7 +23,7 @@ class UpdateForm extends FormModel
         $comment = $this->getItemDetails($id, $userId);
 
         /* If comment doesn't belong to user, redirect to all comments */
-        if(!$comment) {
+        if (!$comment) {
             $this->di->get("response")->redirect("comment");
         }
 

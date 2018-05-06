@@ -15,7 +15,7 @@
 
 <?php if ($username) : ?>
     <p><a href="comment/create">Add comment</a></p>
-<?php else: ?>
+<?php else : ?>
     <p><a href="user/login">You need to login</a></p>
 <?php endif; ?>
 

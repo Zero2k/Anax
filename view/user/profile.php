@@ -11,6 +11,6 @@
     <?= htmlentities(substr($profile->created, 0, 10)) ?>
     <hr>
     <a href="update">Change user</a> | <a href="logout">Logout</a>
-<?php else: ?>
+<?php else : ?>
     <p><a href="login">You need to login</a></p>
 <?php endif; ?>
