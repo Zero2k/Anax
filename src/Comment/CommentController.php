@@ -10,6 +10,7 @@ use \Anax\Comment\HTMLForm\CreateForm;
 use \Anax\Comment\HTMLForm\EditForm;
 use \Anax\Comment\HTMLForm\DeleteForm;
 use \Anax\Comment\HTMLForm\UpdateForm;
+use \Vibe\Gravatar\Gravatar;
 
 /**
  * A controller class.
@@ -41,10 +42,12 @@ class CommentController implements
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $comment = new Comment();
+        $gravatar = new Gravatar();
         $comment->setDb($this->di->get("database"));
 
         $data = [
             "allComments" => $comment->findAll(),
+            "gravatar" => $gravatar,
             "username" => $this->di->get("session")->get("username"),
         ];
 

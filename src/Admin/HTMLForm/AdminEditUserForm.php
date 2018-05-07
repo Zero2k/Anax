@@ -9,7 +9,7 @@ use \Anax\User\User;
 /**
  * Form to update an item.
  */
-class AdminEditForm extends FormModel
+class AdminEditUserForm extends FormModel
 {
     /**
      * Constructor injects with DI container and the id to update.
@@ -36,6 +36,7 @@ class AdminEditForm extends FormModel
 
                 "acronym" => [
                     "type" => "text",
+                    "readonly" => true,
                     "validation" => ["not_empty"],
                     "value" => $user->acronym,
                 ],
@@ -47,9 +48,9 @@ class AdminEditForm extends FormModel
                 ],
 
                 "admin" => [
-                    "type" => "text",
-                    "validation" => ["not_empty"],
-                    "value" => $user->admin,
+                    "type" => "select",
+                    "label" => "Set role",
+                    "options" => ["$user->admin" => $user->admin, "0" => "False", "1" => "True"]
                 ],
 
                 "password" => [

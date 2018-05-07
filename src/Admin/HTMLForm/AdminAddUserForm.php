@@ -9,7 +9,7 @@ use \Anax\User\User;
 /**
  * Example of FormModel implementation.
  */
-class AdminAddForm extends FormModel
+class AdminAddUserForm extends FormModel
 {
     /**
      * Constructor injects with DI container.
@@ -36,8 +36,9 @@ class AdminAddForm extends FormModel
                 ],
 
                 "admin" => [
-                    "type"        => "text",
-                    "validation" => ["not_empty"],
+                    "type" => "select",
+                    "label" => "Set role",
+                    "options" => ["0" => "False", "1" => "True"]
                 ],
         
                 "password" => [

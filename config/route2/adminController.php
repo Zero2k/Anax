@@ -25,20 +25,38 @@ return [
         [
             "info" => "Edit user.",
             "requestMethod" => "get|post",
-            "path" => "edit/{id:digit}",
+            "path" => "users/edit/{id:digit}",
             "callable" => ["adminController", "editUser"],
         ],
         [
-            "info" => "Edit user.",
+            "info" => "Delete user.",
             "requestMethod" => "get|post",
-            "path" => "delete/{id:digit}",
+            "path" => "users/delete/{id:digit}",
             "callable" => ["adminController", "deleteUser"],
         ],
         [
             "info" => "Add user.",
             "requestMethod" => "get|post",
-            "path" => "add",
+            "path" => "users/add",
             "callable" => ["adminController", "addUser"],
+        ],
+        [
+            "info" => "View comments.",
+            "requestMethod" => "get|post",
+            "path" => "comments",
+            "callable" => ["adminController", "getComments"],
+        ],
+        [
+            "info" => "Edit comment.",
+            "requestMethod" => "get|post",
+            "path" => "comments/edit/{id:digit}",
+            "callable" => ["adminController", "editComment"],
+        ],
+        [
+            "info" => "Delete comments.",
+            "requestMethod" => "get|post",
+            "path" => "comments/delete/{id:digit}",
+            "callable" => ["adminController", "deleteComment"],
         ],
     ]
 ];

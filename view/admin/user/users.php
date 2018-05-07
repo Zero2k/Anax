@@ -16,12 +16,12 @@
                 <td><?= $user->acronym ?></td>
                 <td><?= $user->email ?></td>
                 <td><?= $user->admin ?></td>
-                <td><a href="edit/<?= $user->id ?>">Edit</a> | <a href="delete/<?= $user->id ?>">Delete</a></td>
+                <td><a href="users/edit/<?= $user->id ?>">Edit</a> | <a href="users/delete/<?= $user->id ?>">Delete</a></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
-    <a href="add">Add new user</a>
+    <a href="users/add">Add new user</a>
 <?php else : ?>
     <p><a href="login">You need to login</a></p>
 <?php endif; ?>

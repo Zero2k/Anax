@@ -36,6 +36,7 @@ class UpdateUserForm extends FormModel
 
                 "acronym" => [
                     "type" => "text",
+                    "readonly" => true,
                     "validation" => ["not_empty"],
                     "value" => $user->acronym,
                 ],

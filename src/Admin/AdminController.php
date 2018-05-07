@@ -7,10 +7,11 @@ use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\Di\InjectionAwareTrait;
 use \Anax\Admin\HTMLForm\AdminLoginForm;
-use \Anax\Admin\HTMLForm\AdminEditForm;
-use \Anax\Admin\HTMLForm\AdminDeleteForm;
-use \Anax\Admin\HTMLForm\AdminAddForm;
+use \Anax\Admin\HTMLForm\AdminEditUserForm;
+use \Anax\Admin\HTMLForm\AdminDeleteUserForm;
+use \Anax\Admin\HTMLForm\AdminAddUserForm;
 use \Anax\User\User;
+use \Anax\Comment\Comment;
 
 /**
  * A controller class.
@@ -104,7 +105,7 @@ class AdminController implements
             "users" => $users->findAll(),
         ];
 
-        $view->add("admin/users", $data);
+        $view->add("admin/user/users", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
@@ -117,7 +118,7 @@ class AdminController implements
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $session    = $this->di->get("session");
-        $form       = new AdminEditForm($this->di, $id);
+        $form       = new AdminEditUserForm($this->di, $id);
 
         $form->check();
 
@@ -127,7 +128,7 @@ class AdminController implements
             "content" => $form->getHTML(),
         ];
 
-        $view->add("admin/edit", $data);
+        $view->add("admin/user/edit", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
@@ -140,7 +141,7 @@ class AdminController implements
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $session    = $this->di->get("session");
-        $form       = new AdminDeleteForm($this->di, $id);
+        $form       = new AdminDeleteUserForm($this->di, $id);
 
         $form->check();
 
@@ -150,7 +151,7 @@ class AdminController implements
             "content" => $form->getHTML(),
         ];
 
-        $view->add("admin/delete", $data);
+        $view->add("admin/user/delete", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
@@ -163,7 +164,7 @@ class AdminController implements
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
         $session    = $this->di->get("session");
-        $form       = new AdminAddForm($this->di);
+        $form       = new AdminAddUserForm($this->di);
 
         $form->check();
 
@@ -173,8 +174,44 @@ class AdminController implements
             "content" => $form->getHTML(),
         ];
 
-        $view->add("admin/add", $data);
+        $view->add("admin/user/add", $data);
 
         $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function getComments()
+    {
+        $title      = "All comments";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $comments = new Comment();
+        $comments->setDb($this->di->get("database"));
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "comments" => $comments->findAll(),
+        ];
+
+        $view->add("admin/comment/comments", $data);
+
+        $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    public function editComment($id)
+    {
+        # code...
+    }
+
+
+
+    public function deleteComment($id)
+    {
+        # code...
     }
 }

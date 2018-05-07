@@ -17,7 +17,7 @@ class Gravatar
     {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
-        $url .= "?s=$size&d=mm&r=g";
+        $url .= "?s=$size";
         return $url;
     }
 }

@@ -9,7 +9,7 @@ use \Anax\User\User;
 /**
  * Form to update an item.
  */
-class AdminDeleteForm extends FormModel
+class AdminDeleteUserForm extends FormModel
 {
     /**
      * Constructor injects with DI container and the id to update.

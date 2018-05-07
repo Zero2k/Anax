@@ -3,7 +3,7 @@
 <?php foreach ($allComments as $comment) : ?>
 <ul class="list-unstyled">
   <li class="media comment">
-    <img class="mr-3" src="http://via.placeholder.com/80x80" alt="Generic placeholder image">
+    <img class="mr-3" src="<?= $gravatar->url($comment->email) ?>" alt="Generic placeholder image">
     <div class="media-body">
     <h5 class="mt-0"><?= $comment->postedBy ?></h5>
     <h6>posted <?= $comment->created ?></h6>
