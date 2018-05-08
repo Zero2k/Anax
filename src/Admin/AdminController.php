@@ -10,6 +10,8 @@ use \Anax\Admin\HTMLForm\AdminLoginForm;
 use \Anax\Admin\HTMLForm\AdminEditUserForm;
 use \Anax\Admin\HTMLForm\AdminDeleteUserForm;
 use \Anax\Admin\HTMLForm\AdminAddUserForm;
+use \Anax\Admin\HTMLForm\AdminEditCommentForm;
+use \Anax\Admin\HTMLForm\AdminDeleteCommentForm;
 use \Anax\User\User;
 use \Anax\Comment\Comment;
 
@@ -205,13 +207,45 @@ class AdminController implements
 
     public function editComment($id)
     {
-        # code...
+        $title      = "Edit comment";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $form       = new AdminEditCommentForm($this->di, $id);
+
+        $form->check();
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "content" => $form->getHTML(),
+        ];
+
+        $view->add("admin/comment/edit", $data);
+
+        $pageRender->renderPage(["title" => $title]);
     }
 
 
 
     public function deleteComment($id)
     {
-        # code...
+        $title      = "Delete comment";
+        $view       = $this->di->get("view");
+        $pageRender = $this->di->get("pageRender");
+        $session    = $this->di->get("session");
+        $form       = new AdminDeleteCommentForm($this->di, $id);
+
+        $form->check();
+
+        $data = [
+            "userExist" => $session->get("userId"),
+            "userAdmin" => $session->get("userAdmin"),
+            "content" => $form->getHTML(),
+        ];
+
+        $view->add("admin/comment/delete", $data);
+
+        $pageRender->renderPage(["title" => $title]);
     }
 }

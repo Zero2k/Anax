@@ -24,5 +24,9 @@ return [
     "probile" => [
         "text" => "Profile",
         "route" => "user/profile"
+    ],
+    "admin" => [
+        "text" => "Admin",
+        "route" => "admin"
     ]
 ];

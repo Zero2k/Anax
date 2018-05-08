@@ -70,20 +70,14 @@ class CreateUserForm extends FormModel
         $passwordAgain = $this->form->value("password-again");
     
         // Check password matches
-        if ($password !== $passwordAgain ) {
+        if ($password !== $passwordAgain) {
             $this->form->rememberValues();
             $this->form->addOutput("Password did not match.");
             return false;
         }
     
-        // Save to database #1
-        /* $db = $this->di->get("database");
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $db->connect()
-           ->insert("User", ["acronym", "password"])
-           ->execute([$acronym, $password]); */
 
-        // Save to database #2
+        // Save user to database
         $user = new User();
         $user->setDb($this->di->get("database"));
         $user->acronym = $acronym;
