@@ -87,5 +87,5 @@ class CreateUserForm extends FormModel
     
         $this->form->addOutput("User was created.");
         return true;
-    }    
+    }
 }

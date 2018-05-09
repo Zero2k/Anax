@@ -52,7 +52,7 @@ class CreateForm extends FormModel
         $comment = new Comment();
         $comment->setDb($this->di->get("database"));
         $comment->userId = $this->di->get("session")->get("userId");
-        $comment->email = $this->di->get("session")->get("userEmail"); 
+        $comment->email = $this->di->get("session")->get("userEmail");
         $comment->postedBy = $this->di->get("session")->get("username");
         $comment->text = $this->form->value("text");
         $comment->save();

@@ -94,8 +94,8 @@ class AdminAddUserForm extends FormModel
         $user->admin = $admin;
         $user->setPassword($password);
         $user->save();
-    
+
         $this->form->addOutput("User was created.");
         return true;
-    }    
+    }
 }

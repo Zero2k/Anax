@@ -91,7 +91,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to get all user profiles.
+     *
+     * @return void
+     */
     public function getUsers()
     {
         $title      = "All users";
@@ -113,7 +117,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to edit user profile.
+     *
+     * @return void
+     */
     public function editUser($id)
     {
         $title      = "Edit user";
@@ -136,7 +144,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to delete user profile.
+     *
+     * @return void
+     */
     public function deleteUser($id)
     {
         $title      = "Delete user";
@@ -159,7 +171,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to add user profile.
+     *
+     * @return void
+     */
     public function addUser()
     {
         $title      = "Add user";
@@ -182,7 +198,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to get all comments.
+     *
+     * @return void
+     */
     public function getComments()
     {
         $title      = "All comments";
@@ -204,7 +224,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to edit comment.
+     *
+     * @return void
+     */
     public function editComment($id)
     {
         $title      = "Edit comment";
@@ -227,7 +251,11 @@ class AdminController implements
     }
 
 
-
+    /**
+     * Handler for admin to delete comment.
+     *
+     * @return void
+     */
     public function deleteComment($id)
     {
         $title      = "Delete comment";

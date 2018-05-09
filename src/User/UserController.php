@@ -104,7 +104,11 @@ class UserController implements
     }
 
 
-
+    /**
+     * Handler update user.
+     *
+     * @return void
+     */
     public function getUpdateUser()
     {
         $title      = "Update user";
@@ -126,7 +130,11 @@ class UserController implements
     }
 
 
-
+    /**
+     * Handler user profile.
+     *
+     * @return void
+     */
     public function viewUserProfile()
     {
         $title      = "View user profile";
