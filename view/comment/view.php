@@ -8,7 +8,9 @@
     <h5 class="mt-0"><?= $comment->postedBy ?></h5>
     <h6>posted <?= $comment->created ?></h6>
     <p><?= $comment->text ?></p>
-    <small><a href="comment/update/<?= $comment->id ?>">update</a></small>
+    <?php if ($username) : ?>
+        <small><a href="comment/update/<?= $comment->id ?>">update</a></small>
+    <?php endif; ?>
     </div>
   </li>
 </ul>

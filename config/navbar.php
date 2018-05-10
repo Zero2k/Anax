@@ -17,6 +17,10 @@ return [
         "text" => "Comments",
         "route" => "comment"
     ],
+    "book" => [
+        "text" => "Books",
+        "route" => "book"
+    ],
     "about" => [
         "text" => "About",
         "route" => "about"
