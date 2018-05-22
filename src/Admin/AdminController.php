@@ -13,7 +13,7 @@ use \Anax\Admin\HTMLForm\AdminAddUserForm;
 use \Anax\Admin\HTMLForm\AdminEditCommentForm;
 use \Anax\Admin\HTMLForm\AdminDeleteCommentForm;
 use \Anax\User\User;
-use \Anax\Comment\Comment;
+use \Vibe\Comment\Comment;
 
 /**
  * A controller class.

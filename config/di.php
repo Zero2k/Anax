@@ -139,7 +139,7 @@ return [
         "commentController" => [
             "shared" => true,
             "callback" => function () {
-                $obj = new \Anax\Comment\CommentController();
+                $obj = new \Vibe\Comment\CommentController();
                 $obj->setDI($this);
                 return $obj;
             }

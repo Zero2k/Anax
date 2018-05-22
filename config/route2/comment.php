@@ -1,21 +1,32 @@
 <?php
 /**
- * Routes for Comments.
+ * Routes for controller.
  */
- 
 return [
     "routes" => [
         [
-            "info" => "View comments",
+            "info" => "Controller index.",
             "requestMethod" => "get",
             "path" => "",
-            "callable" => ["commentController", "viewComments"]
+            "callable" => ["commentController", "getIndex"],
         ],
         [
-            "info" => "Post new comment",
-            "requestMethod" => "post",
-            "path" => "add",
-            "callable" => ["commentController", "addComment"]
+            "info" => "Create an item.",
+            "requestMethod" => "get|post",
+            "path" => "create",
+            "callable" => ["commentController", "getPostCreateItem"],
+        ],
+        [
+            "info" => "Delete an item.",
+            "requestMethod" => "get|post",
+            "path" => "delete",
+            "callable" => ["commentController", "getPostDeleteItem"],
+        ],
+        [
+            "info" => "Update an item.",
+            "requestMethod" => "get|post",
+            "path" => "update/{id:digit}",
+            "callable" => ["commentController", "getPostUpdateItem"],
         ],
     ]
 ];

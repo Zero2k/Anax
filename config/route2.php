@@ -35,7 +35,7 @@ return [
         [
             // Add routes from commentController and mount on comment/
             "mount" => "comment",
-            "file" => __DIR__ . "/route2/commentController.php",
+            "file" => __DIR__ . "/route2/comment.php",
         ],
         [
             // Add routes from userController and mount on user/

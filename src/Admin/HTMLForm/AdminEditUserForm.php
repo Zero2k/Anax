@@ -49,7 +49,7 @@ class AdminEditUserForm extends FormModel
 
                 "admin" => [
                     "type" => "select",
-                    "label" => "Set role",
+                    "label" => "Set role - Admin?",
                     "options" => ["$user->admin" => $user->admin, "0" => "False", "1" => "True"]
                 ],
 

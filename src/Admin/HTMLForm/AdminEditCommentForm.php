@@ -4,7 +4,7 @@ namespace Anax\Admin\HTMLForm;
 
 use \Anax\HTMLForm\FormModel;
 use \Anax\DI\DIInterface;
-use \Anax\Comment\Comment;
+use \Vibe\Comment\Comment;
 
 /**
  * Form to update an item.
